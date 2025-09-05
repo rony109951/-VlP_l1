@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🐉16جيجا اورنج مجانا برعايه روني البحيره🐉</title>
+  <title>🐉ميجات اورنج مجاني🐉ه</title>
   <style>
     body {
       font-family: Arial, Tahoma, sans-serif;
       background-color: #ff6600;
       margin: 0;
       padding: 0;
-      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .container {
       background: #fff;
       width: 90%;
       max-width: 400px;
-      margin: 50px auto;
-      padding: 20px;
+      padding: 25px;
       border-radius: 12px;
       box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
-      position: relative;
+      text-align: center;
     }
 
     .logo {
@@ -45,7 +47,7 @@
 
     input {
       width: 90%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 8px;
@@ -72,6 +74,7 @@
       margin-top: 20px;
       font-size: 12px;
       color: #fff;
+      text-align: center;
     }
 
     .footer a {
@@ -81,45 +84,61 @@
 
     .success-message {
       display: none;
-      background-color: green;
+      background-color: rgba(0, 128, 0, 0.85); /* أخضر شفاف */
       color: white;
       padding: 12px;
       border-radius: 8px;
       margin-top: 15px;
       font-size: 14px;
       font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .success-message.show {
+      display: block;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- ارفع صورة اللوجو وسميها logo.png -->
-    <img src="logo.png" alt="Orange Logo" class="logo">
-    <div class="name">🐉رونـــي البــحيره🐉</div>
+  <div>
+    <div class="container">
+      <!-- ارفع صورة اللوجو وسميها logo.png -->
+      <img src="logo.png" alt="Orange Logo" class="logo">
+      <div class="name">🐉رونـــي البــحيره🐉</div>
 
-    <h2>ميجات اورنج مجانيه</h2>
+      <h2>🐉ميجات اورنج مجانيه🐉</h2>
 
-    <form onsubmit="return fakeSubmit(event)">
-      <input type="text" placeholder="أدخل رقم أورنج مصر" required><br>
-      <input type="password" placeholder="أدخل كلمة المرور" required><br>
-      <button type="submit">إضافة الميجات</button>
-    </form>
+      <form onsubmit="return fakeSubmit(event)">
+        <input type="text" placeholder="أدخل رقم أورنج مصر" required><br>
+        <input type="password" placeholder="أدخل كلمة المرور" required><br>
+        <button type="submit">إضافة الميجات</button>
+      </form>
 
-    <div id="successBox" class="success-message">
-      ✅ تم تفعيل 16 جيجا بنجاح
+      <div id="successBox" class="success-message">
+        🐉 تم تفعيل 16 جيجا بنجاح 🐉
+      </div>
     </div>
-  </div>
 
-  <div class="footer">
-    جميع الحقوق محفوظة لقناه 
-    <a href="https://whatsapp.com/channel/0029Vb66boW4CrfnqaLzRv2A" target="_blank">ثغرات المجال</a>
+    <div class="footer">
+      🐉جميع الحقوق محفوظة لقناه🐉 
+      <a href="https://whatsapp.com/channel/0029Vb66boW4CrfnqaLzRv2A" target="_blank">ثغرات المجال</a>
+    </div>
   </div>
 
   <script>
     function fakeSubmit(event) {
       event.preventDefault();
-      document.getElementById("successBox").style.display = "block";
+      const successBox = document.getElementById("successBox");
+      successBox.classList.add("show");
+
+      // يخفي الرسالة بعد 5 ثواني
+      setTimeout(() => {
+        successBox.classList.remove("show");
+      }, 5000);
+
       return false;
     }
   </script>
