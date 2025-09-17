@@ -361,14 +361,6 @@
       addMessage(text, "user");
       input.value = "";
 
-      // رد خاص على "روني"
-      if (text.includes("روني")) {
-        setTimeout(() => {
-          addMessage("ياحيوان روني ده افضل مطور عربي وطور بوتات ومواقع وطورني انا عشان اهزقك ياحيوان", "spider");
-        }, 500);
-        return;
-      }
-
       // رد عشوائي من قائمة الردود
       const response = responses[Math.floor(Math.random() * responses.length)];
       setTimeout(() => {
@@ -393,5 +385,5 @@
     }
   </script>
 </body>
-        </html>
-      
+  </html>
+  
