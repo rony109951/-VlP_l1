@@ -3,46 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تحميل فيديو Instagram</title>
+<title>تحميل من الانستجرام</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;}
-body{background:#E1306C;color:#fff;text-align:center;padding:50px;transition: all 0.5s;}
+body[data-theme="dark"]{background:#111;color:#fff;transition: all 0.5s;}
+body[data-theme="light"]{background:#fff;color:#000;transition: all 0.5s;}
 .raindrops{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:0;}
 .raindrop{position:absolute;width:2px;height:20px;background:rgba(255,255,255,0.7);border-radius:0 0 5px 5px;animation:falling linear infinite;}
 @keyframes falling{0%{transform:translateY(-50px) rotate(10deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(calc(100vh+50px)) rotate(10deg);opacity:0;}}
-.container{background-color: rgba(255,255,255,0.05);width:100%;max-width:400px;padding:25px;border-radius:15px;position:relative;z-index:1;margin:20px auto;color:#fff;text-align:center;}
-h1{margin-bottom:20px;font-size:24px;}
-.input-group{position:relative;margin-bottom:20px;}
-.input-group img{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:80px;height:80px;border-radius:50%;border:3px solid #fff;object-fit:cover;}
-input[type="text"]{width:100%;padding:12px 15px;font-size:16px;border:2px solid #555;border-radius:8px;background-color:rgba(255,255,255,0.1);color:#fff;}
-input[type="text"]::placeholder{color:#ccc;}
-input[type="text"]:focus{border-color:#fff;outline:none;}
-button{padding:12px 20px;border:none;border-radius:8px;background:#fff;color:#E1306C;font-weight:bold;cursor:pointer;width:100%;margin-top:10px;transition:all 0.3s;}
-button:hover{transform:translateY(-2px);}
-.success{color:#fff;background-color:rgba(0,0,0,0.2);padding:15px;border-radius:8px;margin-top:20px;display:none;}
-footer{margin-top:50px;color:#fff;}
-.toggle-btn{position:fixed;top:20px;right:20px;padding:10px 15px;cursor:pointer;border-radius:8px;border:none;background-color:#fff;color:#E1306C;font-weight:bold;z-index:9999;}
+.container{position:relative;z-index:1;max-width:500px;margin:100px auto 50px auto;padding:20px;border-radius:15px;background:rgba(255,255,255,0.05);text-align:center;}
+h1.site-title{margin-bottom:20px;font-size:28px;font-weight:bold;}
+.input-group{margin-bottom:20px;position:relative;}
+.input-group img{display:block;width:80px;height:80px;border-radius:50%;margin:0 auto 20px auto;object-fit:cover;border:3px solid #fff;}
+input[type="text"]{width:100%;padding:12px 15px;font-size:16px;border:2px solid #555;border-radius:8px;background-color:rgba(255,255,255,0.1);color:inherit;}
+input[type="text"]::placeholder{color:#888;}
+input[type="text"]:focus{border-color:#000;outline:none;}
+button{padding:12px 20px;border:none;border-radius:50px;font-weight:bold;cursor:pointer;transition:all 0.3s;margin-top:10px;}
+button#downloadBtn{background:#E1306C;color:#fff;width:100%;}
+button#downloadBtn:hover{opacity:0.9;}
+.toggle-btn{position:fixed;top:20px;right:20px;width:50px;height:50px;border-radius:50%;border:none;font-size:24px;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;}
+video{width:100%;margin-top:15px;border-radius:12px;}
+footer{margin-top:50px;text-align:center;font-size:14px;color:inherit;}
+footer a{color:inherit;text-decoration:none;font-weight:bold;}
 </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 
-<button class="toggle-btn" onclick="toggleTheme()">تبديل الوضع</button>
+<button class="toggle-btn" id="themeBtn">💘</button>
 
 <div class="raindrops" id="raindrops"></div>
 
 <div class="container">
-<h1>تحميل فيديو Instagram</h1>
+<h1 class="site-title">تحميل من الانستجرام</h1>
 <div class="input-group">
 <img src="myphoto.jpg" alt="أيقونتي" id="icon">
 <input type="text" id="videoUrl" placeholder="أدخل رابط الفيديو هنا">
 </div>
-<button onclick="downloadVideo()">تحميل الفيديو</button>
-<div id="message" class="success"></div>
+<button id="downloadBtn">تحميل الفيديو</button>
+<video id="videoPreview" controls style="display:none;"></video>
 </div>
 
 <footer>
 جميع الحقوق محفوظة © روني البحيره | رقم المطور: 01212843252<br>
-<a href="https://whatsapp.com/channel/0029Vb66boW4CrfnqaLzRv2A" target="_blank" style="color:#fff;">انضم لقناة الواتساب لمتابعة تحديث الموقع</a>
+<a href="https://whatsapp.com/channel/0029Vb66boW4CrfnqaLzRv2A" target="_blank">انضم لقناة الواتساب لمتابعة تحديث الموقع</a>
 </footer>
 
 <script>
@@ -68,29 +71,34 @@ function createRaindrops(){
 window.addEventListener( load ,createRaindrops);
 
 // تبديل الوضع
-function toggleTheme(){
+const themeBtn=document.getElementById( themeBtn );
+themeBtn.addEventListener( click ,()=>{
   if(document.body.dataset.theme=== light ){
     document.body.dataset.theme= dark ;
-    document.body.style.backgroundColor= #E1306C ;
+    themeBtn.textContent= 🌙 ;
   }else{
     document.body.dataset.theme= light ;
-    document.body.style.backgroundColor= #fff ;
+    themeBtn.textContent= 💘 ;
   }
   createRaindrops();
-}
+});
 
-// تحميل الفيديو (فتح الرابط فقط)
-function downloadVideo(){
-  const url=document.getElementById( videoUrl ).value;
+// معاينة وتحميل الفيديو
+document.getElementById( downloadBtn ).addEventListener( click ,()=>{
+  const url=document.getElementById( videoUrl ).value.trim();
   if(!url){alert( أدخل رابط الفيديو! ); return;}
-  const messageDiv=document.getElementById( message );
-  messageDiv.style.display= block ;
-  messageDiv.innerHTML= ⏳ جاري جلب الفيديو... ;
-  
-  // فتح الفيديو في تبويب جديد لتنزيله
-  window.open(url, _blank );
-  messageDiv.innerHTML= ✅ تم جلب الفيديو، انضم لقناة الواتساب لمتابعة تحديث الموقع ;
-}
+  const videoEl=document.getElementById( videoPreview );
+  // عرض معاينة الفيديو
+  videoEl.src=url;
+  videoEl.style.display= block ;
+  videoEl.load();
+  videoEl.play();
+  // إنشاء رابط تحميل
+  const a=document.createElement( a );
+  a.href=url;
+  a.download= instagram_video.mp4 ;
+  a.click();
+});
 </script>
 
 </body>
